@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnalistik SRMA 24 KEDIRI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { jakarta: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        sky: {
+                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc',
+                            400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1',
+                            800: '#075985', 900: '#0c4a6e', 950: '#082f49'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background: #f0f9ff; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #0ea5e9; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(14,165,233,0.3); }
+            50% { box-shadow: 0 0 40px rgba(14,165,233,0.6); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes bounce-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes wave {
+            0%, 100% { transform: translateY(0) scaleY(1); }
+            50% { transform: translateY(-10px) scaleY(1.1); }
+        }
+        @keyframes textReveal {
+            0% { clip-path: inset(0 100% 0 0); }
+            100% { clip-path: inset(0 0 0 0); }
+        }
+        @keyframes charPop {
+            0% { opacity: 0; transform: translateY(20px) scale(0.5); }
+            60% { transform: translateY(-5px) scale(1.1); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        .animate-on-scroll.from-left { transform: translateX(-40px); }
+        .animate-on-scroll.from-left.visible { transform: translateX(0); }
+        .animate-on-scroll.from-right { transform: translateX(40px); }
+        .animate-on-scroll.from-right.visible { transform: translateX(0); }
+        .animate-on-scroll.scale-in { transform: scale(0.9); }
+        .animate-on-scroll.scale-in.visible { transform: scale(1); }
+
+        .char-animate span {
+            display: inline-block;
+            opacity: 0;
+            animation: charPop 0.5s forwards;
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #0284c7, #38bdf8, #0ea5e9, #7dd3fc, #0284c7);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradientMove 6s ease infinite;
+        }
+
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #0ea5e9;
+            animation: typing 3s steps(40) forwards, blink 0.8s step-end infinite;
+            width: 0;
+        }
+        .typing-text.active { width: auto; animation: typing 3s steps(40) forwards, blink 0.8s step-end infinite; }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(14,165,233,0.2);
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .marquee-track {
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+
+        /* Nav active */
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: #0ea5e9; transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #e0f2fe; }
+        ::-webkit-scrollbar-thumb { background: #7dd3fc; border-radius: 99px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+
+        .structure-line {
+            position: relative;
+        }
+        .structure-line::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: #bae6fd;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(14,165,233,0.4);
+        }
+
+        .wave-divider {
+            position: relative;
+            overflow: hidden;
+        }
+        .wave-divider::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,50 C200,100 400,0 600,50 C800,100 1000,0 1200,50 L1200,120 L0,120 Z' fill='%23f0f9ff'/%3E%3C/svg%3E") no-repeat center;
+            background-size: cover;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+        .stagger-8 { animation-delay: 0.8s; }
+
+        .toast {
+            animation: slideDown 0.5s forwards;
+        }
+
+        /* Mobile menu */
+        .mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1); }
+        .mobile-menu.open { transform: translateX(0); }
+    </style>
+</head>
+<body class="font-jakarta text-sky-950 overflow-x-hidden">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-6 right-6 z-[100] hidden">
+        <div class="glass border border-sky-200 rounded-2xl px-6 py-4 shadow-xl flex items-center gap-3">
+            <span class="iconify text-green-500 text-xl" data-icon="solar:check-circle-bold"></span>
+            <span id="toast-msg" class="text-sm font-semibold text-sky-800">Pendaftaran berhasil!</span>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center shadow-lg group-hover:shadow-sky-300/50 transition-all duration-300 group-hover:scale-110">
+                    <span class="iconify text-white text-xl" data-icon="solar:pen-new-round-bold"></span>
+                </div>
+                <span class="font-extrabold text-lg text-sky-900 tracking-tight">SRMA<span class="text-sky-500">24</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#profil" class="nav-link text-sm font-semibold text-sky-800 hover:text-sky-500 transition-colors">Profil</a>
+                <a href="#visi-misi" class="nav-link text-sm font-semibold text-sky-800 hover:text-sky-500 transition-colors">Visi & Misi</a>
+                <a href="#program" class="nav-link text-sm font-semibold text-sky-800 hover:text-sky-500 transition-colors">Program</a>
+                <a href="#struktur" class="nav-link text-sm font-semibold text-sky-800 hover:text-sky-500 transition-colors">Struktur</a>
+                <a href="#karya" class="nav-link text-sm font-semibold text-sky-800 hover:text-sky-500 transition-colors">Karya</a>
+                <a href="#galeri" class="nav-link text-sm font-semibold text-sky-800 hover:text-sky-500 transition-colors">Galeri</a>
+                <a href="#daftar" class="btn-primary text-white text-sm font-bold px-6 py-2.5 rounded-full">Daftar</a>
+            </div>
+            <button id="menuBtn" class="md:hidden w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center">
+                <span class="iconify text-sky-600 text-xl" data-icon="solar:hamburger-menu-linear"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full z-[60] bg-white/95 backdrop-blur-xl shadow-2xl p-8 flex flex-col">
+        <button id="closeMenu" class="self-end w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center mb-8">
+            <span class="iconify text-sky-600 text-xl" data-icon="solar:close-circle-linear"></span>
+        </button>
+        <div class="flex flex-col gap-4">
+            <a href="#profil" class="mobile-link text-lg font-semibold text-sky-800 hover:text-sky-500 py-2 border-b border-sky-100">Profil</a>
+            <a href="#visi-misi" class="mobile-link text-lg font-semibold text-sky-800 hover:text-sky-500 py-2 border-b border-sky-100">Visi & Misi</a>
+            <a href="#program" class="mobile-link text-lg font-semibold text-sky-800 hover:text-sky-500 py-2 border-b border-sky-100">Program</a>
+            <a href="#struktur" class="mobile-link text-lg font-semibold text-sky-800 hover:text-sky-500 py-2 border-b border-sky-100">Struktur</a>
+            <a href="#karya" class="mobile-link text-lg font-semibold text-sky-800 hover:text-sky-500 py-2 border-b border-sky-100">Karya</a>
+            <a href="#galeri" class="mobile-link text-lg font-semibold text-sky-800 hover:text-sky-500 py-2 border-b border-sky-100">Galeri</a>
+            <a href="#daftar" class="btn-primary text-white text-center font-bold px-6 py-3 rounded-full mt-4">Daftar Sekarang</a>
+        </div>
+    </div>
+    <div id="menuOverlay" class="fixed inset-0 bg-black/30 z-[55] hidden"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="absolute top-20 -left-32 w-96 h-96 bg-sky-300/30 blob"></div>
+        <div class="absolute bottom-10 -right-20 w-80 h-80 bg-sky-200/40 blob" style="animation-delay: -3s; animation-duration: 10s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-100/50 rounded-full blur-3xl"></div>
+        <div class="absolute top-32 right-20 w-3 h-3 bg-sky-400 rounded-full" style="animation: bounce-soft 2s infinite;"></div>
+        <div class="absolute top-52 left-40 w-2 h-2 bg-sky-300 rounded-full" style="animation: bounce-soft 2.5s infinite 0.5s;"></div>
+        <div class="absolute bottom-40 left-1/4 w-4 h-4 bg-sky-200 rounded-full" style="animation: bounce-soft 3s infinite 1s;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-28 pb-20 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div>
+                <div class="inline-flex items-center gap-2 bg-sky-100/80 backdrop-blur-sm border border-sky-200 rounded-full px-4 py-2 mb-6" style="animation: fadeInUp 0.8s forwards;">
+                    <span class="w-2 h-2 bg-sky-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-bold text-sky-700 uppercase tracking-widest">Ekstrakurikuler SRMA 24 Kediri</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6" style="animation: fadeInUp 0.8s 0.2s both;">
+                    <span class="text-sky-900">Selamat Datang di</span><br>
+                    <span id="heroTitle" class="shimmer-text"></span>
+                </h1>
+                <p class="text-lg text-sky-700 leading-relaxed mb-8 max-w-lg" style="animation: fadeInUp 0.8s 0.4s both;">
+                    Wadah bagi siswa yang memiliki minat dan bakat di bidang <strong class="text-sky-800">literasi</strong>, <strong class="text-sky-800">fotografi</strong>, dan <strong class="text-sky-800">media kreatif</strong>.
+                </p>
+                <div class="flex flex-wrap gap-4" style="animation: fadeInUp 0.8s 0.6s both;">
+                    <a href="#daftar" class="btn-primary text-white font-bold px-8 py-4 rounded-full text-base flex items-center gap-2">
+                        <span class="iconify" data-icon="solar:pen-new-round-bold"></span>
+                        Gabung Sekarang
+                    </a>
+                    <a href="#profil" class="bg-white/70 backdrop-blur border border-sky-200 text-sky-700 font-bold px-8 py-4 rounded-full text-base hover:bg-white hover:shadow-lg transition-all duration-300 flex items-center gap-2">
+                        <span class="iconify" data-icon="solar:play-circle-bold"></span>
+                        Jelajahi
+                    </a>
+                </div>
+
+                <!-- Motto -->
+                <div class="mt-10 flex items-center gap-4" style="animation: fadeInUp 0.8s 0.8s both;">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center" style="animation: pulse-glow 3s infinite;">
+                        <span class="iconify text-white text-xl" data-icon="solar:heart-bold"></span>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-sky-500 uppercase tracking-widest">Motto</p>
+                        <p id="mottoText" class="text-lg font-bold text-sky-800 italic"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="relative hidden lg:flex justify-center items-center" style="animation: fadeInScale 1s 0.5s both;">
+                <div class="relative w-[420px] h-[500px]">
+                    <!-- Main Image -->
+                    <div class="absolute inset-4 rounded-[3rem] overflow-hidden shadow-2xl border border-sky-200/50" style="animation: float 6s ease-in-out infinite;">
+                        <img src="https://picsum.photos/seed/journalism-hero/420/500.jpg" alt="Jurnalistik" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sky-900/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <p class="text-white font-bold text-lg">Jurnalis Muda</p>
+                            <p class="text-sky-200 text-sm">Kreatif • Jujur • Berwawasan</p>
+                        </div>
+                    </div>
+                    <!-- Floating Cards -->
+                    <div class="absolute -top-4 -right-4 glass border border-sky-200 rounded-2xl p-4 shadow-xl" style="animation: floatSlow 5s ease-in-out infinite;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center">
+                                <span class="iconify text-sky-500 text-xl" data-icon="solar:camera-bold"></span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-sky-500 font-semibold">Fotografi</p>
+                                <p class="text-sm font-bold text-sky-800">Active</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 glass border border-sky-200 rounded-2xl p-4 shadow-xl" style="animation: floatSlow 5s ease-in-out infinite 1s;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center">
+                                <span class="iconify text-sky-500 text-xl" data-icon="solar:document-text-bold"></span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-sky-500 font-semibold">Artikel</p>
+                                <p class="text-sm font-bold text-sky-800">Published</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative Ring -->
+                    <div class="absolute -inset-4 border-2 border-sky-200/30 rounded-[3.5rem]" style="animation: rotate-slow 30s linear infinite;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style="animation: bounce-soft 2s infinite;">
+            <span class="text-xs text-sky-400 font-semibold">Scroll</span>
+            <span class="iconify text-sky-400 text-xl" data-icon="solar:alt-arrow-down-linear"></span>
+        </div>
+    </section>
+
+    <!-- Marquee Section -->
+    <div class="bg-gradient-to-r from-sky-500 via-sky-400 to-sky-600 py-4 overflow-hidden gradient-animate">
+        <div class="flex whitespace-nowrap">
+            <div class="marquee-track flex items-center gap-8 text-white/90 font-bold text-sm uppercase tracking-widest">
+                <span>✦ Menulis dengan Hati</span>
+                <span>✦ Berbagi Informasi</span>
+                <span>✦ Jurnalis Muda</span>
+                <span>✦ Kreatif & Kritis</span>
+                <span>✦ Aktual & Faktual</span>
+                <span>✦ SRMA 24 Kediri</span>
+                <span>✦ Gema Sanjose</span>
+                <span>✦ Menulis dengan Hati</span>
+                <span>✦ Berbagi Informasi</span>
+                <span>✦ Jurnalis Muda</span>
+                <span>✦ Kreatif & Kritis</span>
+                <span>✦ Aktual & Faktual</span>
+                <span>✦ SRMA 24 Kediri</span>
+                <span>✦ Gema Sanjose</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profil Section -->
+    <section id="profil" class="py-24 px-6 relative">
+        <div class="absolute top-0 right-0 w-72 h-72 bg-sky-100/60 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block text-xs font-bold text-sky-500 uppercase tracking-[0.2em] mb-4 bg-sky-50 px-4 py-2 rounded-full border border-sky-100">Tentang Kami</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight animate-text-reveal">Profil Ekstrakurikuler</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll from-left">
+                    <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] group">
+                        <img src="https://picsum.photos/seed/journalism-class/600/450.jpg" alt="Kelas Jurnalistik" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sky-900/70 via-sky-900/20 to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 right-8">
+                            <div class="glass inline-block rounded-full px-4 py-2 mb-3">
+                                <span class="text-xs font-bold text-sky-700">Sejak 2024</span>
+                            </div>
+                            <p class="text-white font-bold text-xl">Ekstrakurikuler Jurnalistik SRMA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll from-right">
+                    <h3 class="text-2xl font-bold text-sky-900 mb-4">Jurnalistik SRMA 24 KEDIRI</h3>
+                    <p class="text-sky-700 leading-relaxed mb-6">
+                        Ekstrakurikuler Jurnalistik SRMA 24 KEDIRI adalah wadah bagi siswa yang memiliki minat dan bakat di bidang <strong class="text-sky-900">literasi, fotografi, dan media kreatif</strong>. Kami berfokus pada pelatihan penulisan berita, wawancara, teknik fotografi, dan pengelolaan majalah dinding (mading) serta website sekolah.
+                    </p>
+                    <p class="text-sky-700 leading-relaxed mb-8">
+                        Di sini, kami belajar menyampaikan informasi secara <strong class="text-sky-900">aktual, faktual, dan bertanggung jawab</strong>. Bergabunglah bersama kami untuk mengasah kemampuan komunikasi dan menjadi jurnalis muda yang kritis!
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-white rounded-2xl p-4 border border-sky-100 text-center card-hover">
+                            <span class="iconify text-sky-500 text-3xl mb-2 block" data-icon="solar:pen-bold"></span>
+                            <p class="text-xs font-bold text-sky-800">Literasi</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 border border-sky-100 text-center card-hover">
+                            <span class="iconify text-sky-500 text-3xl mb-2 block" data-icon="solar:camera-bold"></span>
+                            <p class="text-xs font-bold text-sky-800">Fotografi</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 border border-sky-100 text-center card-hover">
+                            <span class="iconify text-sky-500 text-3xl mb-2 block" data-icon="solar:clapperboard-edit-bold"></span>
+                            <p class="text-xs font-bold text-sky-800">Media</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visi & Misi Section -->
+    <section id="visi-misi" class="py-24 px-6 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-sky-50/50 to-white"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block text-xs font-bold text-sky-500 uppercase tracking-[0.2em] mb-4 bg-sky-50 px-4 py-2 rounded-full border border-sky-100">Arah & Tujuan</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">Visi & Misi</h2>
+            </div>
+
+            <!-- Visi -->
+            <div class="max-w-3xl mx-auto mb-16 animate-on-scroll scale-in">
+                <div class="relative bg-gradient-to-br from-sky-500 to-sky-700 rounded-[2.5rem] p-10 md:p-14 text-center overflow-hidden shadow-2xl">
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute top-10 left-10 w-32 h-32 border border-white/30 rounded-full"></div>
+                        <div class="absolute bottom-10 right-10 w-48 h-48 border border-white/20 rounded-full"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-6" style="animation: pulse-glow 3s infinite;">
+                            <span class="iconify text-white text-3xl" data-icon="solar:eye-bold"></span>
+                        </div>
+                        <h3 class="text-sm font-bold text-sky-200 uppercase tracking-[0.2em] mb-4">Visi</h3>
+                        <p class="text-xl md:text-2xl font-bold text-white leading-relaxed">
+                            "Mewujudkan jurnalis muda yang <span class="text-sky-200">kreatif</span>, <span class="text-sky-200">jujur</span>, dan <span class="text-sky-200">berwawasan luas</span> melalui pengelolaan media sekolah yang profesional."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Misi -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-8 border border-sky-100 card-hover stagger-1 group">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mb-5 group-hover:bg-sky-500 transition-colors duration-300">
+                        <span class="iconify text-sky-500 text-2xl group-hover:text-white transition-colors" data-icon="solar:document-text-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-2">Menulis Berkualitas</h4>
+                    <p class="text-sm text-sky-600 leading-relaxed">Melatih kemampuan menulis berita, fitur (feature), dan artikel yang profesional.</p>
+                </div>
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-8 border border-sky-100 card-hover stagger-2 group">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mb-5 group-hover:bg-sky-500 transition-colors duration-300">
+                        <span class="iconify text-sky-500 text-2xl group-hover:text-white transition-colors" data-icon="solar:videocamera-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-2">Foto & Video</h4>
+                    <p class="text-sm text-sky-600 leading-relaxed">Mengembangkan kemampuan fotografi dan videografi jurnalistik yang kreatif.</p>
+                </div>
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-8 border border-sky-100 card-hover stagger-3 group">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mb-5 group-hover:bg-sky-500 transition-colors duration-300">
+                        <span class="iconify text-sky-500 text-2xl group-hover:text-white transition-colors" data-icon="solar:notebook-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-2">Kelola Media</h4>
+                    <p class="text-sm text-sky-600 leading-relaxed">Mengelola majalah sekolah (Gema Sanjose) dan update konten website/mading berkala.</p>
+                </div>
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-8 border border-sky-100 card-hover stagger-4 group">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mb-5 group-hover:bg-sky-500 transition-colors duration-300">
+                        <span class="iconify text-sky-500 text-2xl group-hover:text-white transition-colors" data-icon="solar:microphone-3-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-2">Reportase</h4>
+                    <p class="text-sm text-sky-600 leading-relaxed">Menyelenggarakan kegiatan reportase kegiatan-kegiatan sekolah secara aktual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Kerja Section -->
+    <section id="program" class="py-24 px-6 relative overflow-hidden">
+        <div class="absolute top-20 left-0 w-64 h-64 bg-sky-200/40 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block text-xs font-bold text-sky-500 uppercase tracking-[0.2em] mb-4 bg-sky-50 px-4 py-2 rounded-full border border-sky-100">Agenda Rutin</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">Program Kerja</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Kelas Jurnalistik -->
+                <div class="animate-on-scroll from-left group">
+                    <div class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-sky-100 card-hover relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-sky-50 rounded-bl-[3rem] -z-0 group-hover:bg-sky-100 transition-colors"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                    <span class="iconify text-white text-2xl" data-icon="solar:book-bold"></span>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Program 01</span>
+                                    <h3 class="text-xl font-bold text-sky-900">Kelas Jurnalistik</h3>
+                                </div>
+                            </div>
+                            <p class="text-sky-600 leading-relaxed mb-4">Pelatihan dasar jurnalistik meliputi Kode Etik Jurnalistik dan Teknik Wawancara yang profesional.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Kode Etik</span>
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Teknik Wawancara</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Update Website -->
+                <div class="animate-on-scroll from-right group">
+                    <div class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-sky-100 card-hover relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-sky-50 rounded-bl-[3rem] -z-0 group-hover:bg-sky-100 transition-colors"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                    <span class="iconify text-white text-2xl" data-icon="solar:global-bold"></span>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Program 02</span>
+                                    <h3 class="text-xl font-bold text-sky-900">Update Konten Website</h3>
+                                </div>
+                            </div>
+                            <p class="text-sky-600 leading-relaxed mb-4">Mengisi rubrik berita, artikel, dan galeri foto di website sekolah secara berkala dan aktual.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Berita</span>
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Artikel</span>
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Galeri Foto</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Magazine -->
+                <div class="animate-on-scroll from-left group">
+                    <div class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-sky-100 card-hover relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-sky-50 rounded-bl-[3rem] -z-0 group-hover:bg-sky-100 transition-colors"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                    <span class="iconify text-white text-2xl" data-icon="solar:tablet-bold"></span>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Program 03</span>
+                                    <h3 class="text-xl font-bold text-sky-900">E-Magazine</h3>
+                                </div>
+                            </div>
+                            <p class="text-sky-600 leading-relaxed mb-4">Penerbitan majalah digital "Gema Sanjose" sebagai wadah karya siswa yang kreatif dan informatif.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Majalah Digital</span>
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Gema Sanjose</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Liputan Event -->
+                <div class="animate-on-scroll from-right group">
+                    <div class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-sky-100 card-hover relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-sky-50 rounded-bl-[3rem] -z-0 group-hover:bg-sky-100 transition-colors"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                    <span class="iconify text-white text-2xl" data-icon="solar:camera-bold"></span>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Program 04</span>
+                                    <h3 class="text-xl font-bold text-sky-900">Liputan Event</h3>
+                                </div>
+                            </div>
+                            <p class="text-sky-600 leading-relaxed mb-4">Meliput acara pensi, upacara, dan kegiatan sekolah lainnya secara langsung dan profesional.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Pensi</span>
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Upacara</span>
+                                <span class="bg-sky-50 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-100">Reportase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Struktur Organisasi -->
+    <section id="struktur" class="py-24 px-6 bg-gradient-to-b from-sky-50 to-white relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block text-xs font-bold text-sky-500 uppercase tracking-[0.2em] mb-4 bg-sky-50 px-4 py-2 rounded-full border border-sky-100">Kepengurusan</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">Struktur Organisasi</h2>
+            </div>
+
+            <!-- Pembina & Ketua -->
+            <div class="flex flex-col items-center mb-8 animate-on-scroll scale-in">
+                <div class="bg-gradient-to-br from-sky-500 to-sky-700 rounded-[2rem] p-6 text-center text-white shadow-xl max-w-xs w-full relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute -top-4 -right-4 w-24 h-24 border-2 border-white/30 rounded-full"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3">
+                            <span class="iconify text-3xl" data-icon="solar:user-star-bold"></span>
+                        </div>
+                        <span class="text-sky-200 text-xs font-bold uppercase tracking-wider">Pembina</span>
+                        <h4 class="font-bold text-lg mt-1">Anisa Maulida Rahma</h4>
+                    </div>
+                </div>
+                <div class="w-0.5 h-8 bg-sky-300"></div>
+            </div>
+
+            <!-- Ketua & Wakil -->
+            <div class="flex justify-center gap-8 mb-8 flex-wrap animate-on-scroll">
+                <div class="flex flex-col items-center">
+                    <div class="bg-white rounded-[2rem] p-6 text-center border-2 border-sky-200 shadow-lg w-52 card-hover relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-sky-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">Ketua</div>
+                        <div class="w-14 h-14 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+                            <span class="iconify text-sky-500 text-2xl" data-icon="solar:user-bold"></span>
+                        </div>
+                        <h4 class="font-bold text-sky-900">Adinda</h4>
+                    </div>
+                    <div class="w-0.5 h-6 bg-sky-200"></div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-white rounded-[2rem] p-6 text-center border-2 border-sky-200 shadow-lg w-52 card-hover relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-sky-400 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">Wakil</div>
+                        <div class="w-14 h-14 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+                            <span class="iconify text-sky-500 text-2xl" data-icon="solar:user-bold"></span>
+                        </div>
+                        <h4 class="font-bold text-sky-900 text-sm">Claura Bintang M.S.</h4>
+                    </div>
+                    <div class="w-0.5 h-6 bg-sky-200"></div>
+                </div>
+            </div>
+
+            <!-- Sekretaris & Divisi -->
+            <div class="flex justify-center mb-6 animate-on-scroll">
+                <div class="bg-white rounded-[2rem] p-5 text-center border border-sky-100 shadow-md w-48 card-hover">
+                    <div class="w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center mx-auto mb-2">
+                        <span class="iconify text-sky-400 text-xl" data-icon="solar:clipboard-bold"></span>
+                    </div>
+                    <span class="text-[10px] font-bold text-sky-400 uppercase tracking-wider">Sekretaris</span>
+                    <h4 class="font-bold text-sky-900 text-sm">Indri Susmiati</h4>
+                </div>
+            </div>
+
+            <div class="h-0.5 bg-gradient-to-r from-transparent via-sky-300 to-transparent max-w-3xl mx-auto mb-6 animate-on-scroll"></div>
+
+            <!-- 3 Divisi -->
+            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <!-- Divisi Majalah -->
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-6 border border-sky-100 card-hover stagger-1">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center mb-4">
+                        <span class="iconify text-sky-500 text-2xl" data-icon="solar:notebook-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-3">Divisi Majalah</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Claura</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Mentari</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Novita</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Raina</li>
+                    </ul>
+                </div>
+
+                <!-- Divisi Mading -->
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-6 border border-sky-100 card-hover stagger-2">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center mb-4">
+                        <span class="iconify text-sky-500 text-2xl" data-icon="solar:gallery-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-3">Divisi Mading</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Indri</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>David</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Jannah</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Andin</li>
+                    </ul>
+                </div>
+
+                <!-- Divisi Vlog -->
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-6 border border-sky-100 card-hover stagger-3">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center mb-4">
+                        <span class="iconify text-sky-500 text-2xl" data-icon="solar:videocamera-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-3">Divisi Vlog</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Sisil</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Ale</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Varo</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Dela</li>
+                        <li class="flex items-center gap-2 text-sm text-sky-600"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span>Deva</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita / Karya Section -->
+    <section id="karya" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block text-xs font-bold text-sky-500 uppercase tracking-[0.2em] mb-4 bg-sky-50 px-4 py-2 rounded-full border border-sky-100">Hasil Karya</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">Artikel & Berita</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Main Article -->
+                <div class="md:col-span-2 lg:col-span-2 animate-on-scroll from-left">
+                    <div class="bg-white rounded-[2.5rem] overflow-hidden border border-sky-100 card-hover group">
+                        <div class="relative aspect-[16/9] overflow-hidden">
+                            <img src="https://picsum.photos/seed/school-interview/800/450.jpg" alt="Wawancara Kepsek" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-sky-900/70 via-transparent to-transparent"></div>
+                            <div class="absolute top-6 left-6">
+                                <span class="bg-sky-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">Eksklusif</span>
+                            </div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <span class="text-sky-200 text-xs font-semibold">Jumat, 30 September 2024</span>
+                                <h3 class="text-white font-bold text-xl md:text-2xl mt-2 leading-tight">Tim Jurnalistik SRMA 24 KEDIRI Sukses Wawancarai Bapak Kepala Sekolah</h3>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <p class="text-sky-600 leading-relaxed">Tim ekskul Jurnalistik SRMA 24 KEDIRI berhasil melakukan wawancara eksklusif terkait peresmian gedung baru sekolah, Jumat (30/9). Kegiatan ini merupakan bagian dari praktik lapangan pelatihan jurnalistik intensif...</p>
+                            <button class="mt-4 text-sky-500 font-bold text-sm flex items-center gap-1 hover:gap-3 transition-all" onclick="showArticle()">
+                                Baca Selengkapnya <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Articles -->
+                <div class="flex flex-col gap-6 animate-on-scroll from-right">
+                    <div class="bg-white rounded-[2rem] overflow-hidden border border-sky-100 card-hover group">
+                        <div class="relative aspect-[16/10] overflow-hidden">
+                            <img src="https://picsum.photos/seed/school-event/400/250.jpg" alt="Liputan Pensi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-sky-900/60 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <span class="bg-sky-400/80 text-white text-[10px] font-bold px-2 py-1 rounded-full">Liputan</span>
+                                <h4 class="text-white font-bold mt-1 text-sm leading-tight">Dokumentasi Pensi SRMA 2024: Pentas Seni yang Meriah</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-[2rem] overflow-hidden border border-sky-100 card-hover group">
+                        <div class="relative aspect-[16/10] overflow-hidden">
+                            <img src="https://picsum.photos/seed/writing-class/400/250.jpg" alt="Kelas Menulis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-sky-900/60 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <span class="bg-sky-400/80 text-white text-[10px] font-bold px-2 py-1 rounded-full">Pelatihan</span>
+                                <h4 class="text-white font-bold mt-1 text-sm leading-tight">Workshop Teknik Wawancara Bersama Jurnalis Profesional</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Modal -->
+    <div id="articleModal" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-6">
+        <div class="bg-white rounded-[2.5rem] max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 md:p-10 relative" style="animation: fadeInScale 0.4s forwards;">
+            <button onclick="closeArticle()" class="absolute top-6 right-6 w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center hover:bg-sky-100 transition-colors">
+                <span class="iconify text-sky-600 text-xl" data-icon="solar:close-circle-bold"></span>
+            </button>
+            <span class="bg-sky-100 text-sky-600 text-xs font-bold px-3 py-1.5 rounded-full">Berita</span>
+            <h2 class="text-2xl font-extrabold text-sky-900 mt-4 mb-2">Tim Jurnalistik SRMA 24 KEDIRI Sukses Wawancarai Bapak Kepala Sekolah</h2>
+            <p class="text-sky-400 text-sm mb-6">Jumat, 30 September 2024 • Oleh: Redaksi Jurnalistik</p>
+            <div class="rounded-2xl overflow-hidden mb-6">
+                <img src="https://picsum.photos/seed/school-interview/800/400.jpg" alt="Wawancara" class="w-full object-cover">
+            </div>
+            <p class="text-sky-700 leading-relaxed mb-4">Tim ekskul Jurnalistik SRMA 24 KEDIRI berhasil melakukan wawancara eksklusif dengan Bapak Kepala Sekolah terkait peresmian gedung baru sekolah, Jumat (30/9).</p>
+            <p class="text-sky-700 leading-relaxed mb-4">Kegiatan ini merupakan bagian dari praktik lapangan pelatihan jurnalistik intensif yang diikuti oleh anggota jurnalistik kelas X dan XI. Dalam kesempatan tersebut, tim berlatih teknik wawancara langsung dengan narasumber penting di lingkungan sekolah.</p>
+            <p class="text-sky-700 leading-relaxed">"Kami sangat antusias bisa praktik langsung wawancara dengan Kepala Sekolah. Ini pengalaman berharga yang membuat kami lebih percaya diri," ujar Adinda, Ketua Ekstrakurikuler Jurnalistik.</p>
+        </div>
+    </div>
+
+    <!-- Galeri Section -->
+    <section id="galeri" class="py-24 px-6 bg-gradient-to-b from-white to-sky-50 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block text-xs font-bold text-sky-500 uppercase tracking-[0.2em] mb-4 bg-white px-4 py-2 rounded-full border border-sky-100">Dokumentasi</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">Galeri Kegiatan</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="animate-on-scroll stagger-1 rounded-[2rem] overflow-hidden aspect-square group cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/seed/journalism-1/400/400.jpg" alt="Kegiatan 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="animate-on-scroll stagger-2 rounded-[2rem] overflow-hidden aspect-square group cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/seed/journalism-2/400/400.jpg" alt="Kegiatan 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="animate-on-scroll stagger-3 rounded-[2rem] overflow-hidden aspect-square group cursor-pointer md:col-span-2 md:row-span-2" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/seed/journalism-3/800/800.jpg" alt="Kegiatan 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="animate-on-scroll stagger-4 rounded-[2rem] overflow-hidden aspect-square group cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/seed/journalism-4/400/400.jpg" alt="Kegiatan 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="animate-on-scroll stagger-5 rounded-[2rem] overflow-hidden aspect-square group cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/seed/journalism-5/400/400.jpg" alt="Kegiatan 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="animate-on-scroll stagger-6 rounded-[2rem] overflow-hidden aspect-square group cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/seed/journalism-6/400/400.jpg" alt="Kegiatan 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="animate-on-scroll stagger-7 rounded-[2rem] overflow-hidden aspect-square group cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/seed/journalism-7/400/400.jpg" alt="Kegiatan 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="animate-on-scroll stagger-8 rounded-[2rem] overflow-hidden aspect-square group cursor-pointer" onclick="openLightbox(this)">
+                    <img src="https://picsum.photos/seed/journalism-8/400/400.jpg" alt="Kegiatan 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/80 backdrop-blur-sm" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white/80 hover:text-white transition-colors">
+            <span class="iconify text-3xl" data-icon="solar:close-circle-bold"></span>
+        </button>
+        <img id="lightboxImg" src="" alt="Preview" class="max-w-[90vw] max-h-[85vh] object-contain rounded-2xl" style="animation: fadeInScale 0.3s forwards;">
+    </div>
+
+    <!-- Daftar / CTA Section -->
+    <section id="daftar" class="py-24 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-sky-600 via-sky-500 to-sky-700 gradient-animate"></div>
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-64 h-64 border-2 border-white/30 rounded-full" style="animation: float 8s ease-in-out infinite;"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 border border-white/20 rounded-full" style="animation: float 10s ease-in-out infinite 2s;"></div>
+            <div class="absolute top-1/2 left-1/3 w-48 h-48 border border-white/20 rounded-full" style="animation: float 12s ease-in-out infinite 4s;"></div>
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <div class="animate-on-scroll scale-in">
+                <div class="w-20 h-20 rounded-3xl bg-white/20 flex items-center justify-center mx-auto mb-8" style="animation: pulse-glow 3s infinite;">
+                    <span class="iconify text-white text-4xl" data-icon="solar:pen-new-round-bold"></span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Jadilah Bagian dari Tim Kreatif Kami!</h2>
+                <p class="text-sky-100 text-lg leading-relaxed mb-4">
+                    Kamu suka fotografi? Hobi nulis cerita? Atau penasaran gimana cara wawancara narasumber penting?
+                </p>
+                <p class="text-white text-xl font-bold mb-8">Yuk, gabung Ekstrakurikuler Jurnalistik! 🎉</p>
+                <p class="text-sky-200 text-sm mb-8">Pendaftaran dibuka untuk kelas <strong class="text-white">X</strong> dan <strong class="text-white">XI</strong></p>
+
+                <!-- Registration Form -->
+                <div class="bg-white/10 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 border border-white/20 max-w-lg mx-auto text-left">
+                    <form id="regForm" onsubmit="return handleRegister(event)">
+                        <div class="mb-5">
+                            <label class="text-sky-100 text-sm font-semibold mb-2 block">Nama Lengkap</label>
+                            <input type="text" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/40 transition" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div class="mb-5">
+                            <label class="text-sky-100 text-sm font-semibold mb-2 block">Kelas</label>
+                            <select required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition appearance-none">
+                                <option value="" class="text-sky-900">Pilih Kelas</option>
+                                <option value="X" class="text-sky-900">Kelas X</option>
+                                <option value="XI" class="text-sky-900">Kelas XI</option>
+                            </select>
+                        </div>
+                        <div class="mb-5">
+                            <label class="text-sky-100 text-sm font-semibold mb-2 block">Divisi yang Diminati</label>
+                            <select required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition appearance-none">
+                                <option value="" class="text-sky-900">Pilih Divisi</option>
+                                <option value="majalah" class="text-sky-900">Divisi Majalah</option>
+                                <option value="mading" class="text-sky-900">Divisi Mading</option>
+                                <option value="vlog" class="text-sky-900">Divisi Vlog</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label class="text-sky-100 text-sm font-semibold mb-2 block">Alasan Bergabung</label>
+                            <textarea rows="3" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/40 transition resize-none" placeholder="Ceritakan alasanmu..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-white text-sky-700 font-bold py-4 rounded-xl text-base hover:bg-sky-50 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2">
+                            <span class="iconify" data-icon="solar:pen-new-round-bold"></span>
+                            Daftar Anggota Baru
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="py-24 px-6 bg-sky-50 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block text-xs font-bold text-sky-500 uppercase tracking-[0.2em] mb-4 bg-white px-4 py-2 rounded-full border border-sky-100">Hubungi Kami</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-sky-900 tracking-tight">Kontak & Media Sosial</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-8 border border-sky-100 text-center card-hover stagger-1">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mx-auto mb-4">
+                        <span class="iconify text-sky-500 text-2xl" data-icon="solar:map-point-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-2">Lokasi</h4>
+                    <p class="text-sm text-sky-600">SRMA 24 Kediri, Jawa Timur</p>
+                </div>
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-8 border border-sky-100 text-center card-hover stagger-2">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mx-auto mb-4">
+                        <span class="iconify text-sky-500 text-2xl" data-icon="solar:letter-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-2">Email</h4>
+                    <p class="text-sm text-sky-600">jurnalistik@srma24kediri.sch.id</p>
+                </div>
+                <div class="animate-on-scroll bg-white rounded-[2rem] p-8 border border-sky-100 text-center card-hover stagger-3">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mx-auto mb-4">
+                        <span class="iconify text-sky-500 text-2xl" data-icon="solar:chat-round-dots-bold"></span>
+                    </div>
+                    <h4 class="font-bold text-sky-900 mb-2">Instagram</h4>
+                    <p class="text-sm text-sky-600">@jurnalistik_srma24</p>
+                </div>
+            </div>
+
+            <!-- Kirim Tulisan -->
+            <div class="max-w-2xl mx-auto mt-12 animate-on-scroll scale-in">
+                <div class="bg-white rounded-[2.5rem] p-8 md:p-10 border border-sky-100 shadow-lg text-center">
+                    <span class="iconify text-sky-400 text-4xl mb-4 block" data-icon="solar:document-add-bold"></span>
+                    <h4 class="font-bold text-sky-900 text-xl mb-2">Punya Tulisan yang Ingin Dipublikasikan?</h4>
+                    <p class="text-sky-600 text-sm mb-6">Kirim karya tulismu dan dapatkan kesempatan untuk dipublikasikan di website dan majalah sekolah!</p>
+                    <button onclick="showToast('Terima kasih! Silakan kirim tulisanmu ke email jurnalistik@srma24kediri.sch.id')" class="btn-primary text-white font-bold px-8 py-3 rounded-full text-sm">
+                        Kirim Tulisan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sky-950 py-16 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-10 left-10 w-48 h-48 border border-white/20 rounded-full"></div>
+            <div class="absolute bottom-10 right-20 w-64 h-64 border border-white/10 rounded-full"></div>
+        </div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center">
+                            <span class="iconify text-white text-xl" data-icon="solar:pen-new-round-bold"></span>
+                        </div>
+                        <span class="font-extrabold text-lg text-white">Jurnalistik SRMA<span class="text-sky-400">24</span></span>
+                    </div>
+                    <p class="text-sky-300 text-sm leading-relaxed">Menulis dengan Hati, Berbagi Informasi. Wadah jurnalis muda yang kreatif, jujur, dan berwawasan luas.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Navigasi</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#profil" class="text-sky-300 text-sm hover:text-white transition-colors">Profil</a></li>
+                        <li><a href="#visi-misi" class="text-sky-300 text-sm hover:text-white transition-colors">Visi & Misi</a></li>
+                        <li><a href="#program" class="text-sky-300 text-sm hover:text-white transition-colors">Program Kerja</a></li>
+                        <li><a href="#struktur" class="text-sky-300 text-sm hover:text-white transition-colors">Struktur Organisasi</a></li>
+                        <li><a href="#karya" class="text-sky-300 text-sm hover:text-white transition-colors">Karya</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Hubungi Kami</h4>
+                    <ul class="space-y-2">
+                        <li class="text-sky-300 text-sm flex items-center gap-2">
+                            <span class="iconify" data-icon="solar:map-point-bold"></span>
+                            SRMA 24 Kediri, Jawa Timur
+                        </li>
+                        <li class="text-sky-300 text-sm flex items-center gap-2">
+                            <span class="iconify" data-icon="solar:letter-bold"></span>
+                            jurnalistik@srma24kediri.sch.id
+                        </li>
+                        <li class="text-sky-300 text-sm flex items-center gap-2">
+                            <span class="iconify" data-icon="solar:chat-round-dots-bold"></span>
+                            @jurnalistik_srma24
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-sky-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sky-400 text-xs">© 2024 Jurnalistik SRMA 24 KEDIRI. All rights reserved.</p>
+                <p class="text-sky-500 text-xs italic">Menulis dengan Hati, Berbagi Informasi ✦</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-xl hover:bg-sky-400 transition-all duration-300 z-50 opacity-0 pointer-events-none" style="transition: opacity 0.3s, transform 0.3s;">
+        <span class="iconify text-xl" data-icon="solar:alt-arrow-up-bold"></span>
+    </button>
+
+    <script>
+        // ===== Typing Animation for Hero Title =====
+        const heroTitle = document.getElementById('heroTitle');
+        const titleText = 'Jurnalistik SRMA!';
+        let charIndex = 0;
+        function typeHeroTitle() {
+            if (charIndex < titleText.length) {
+                heroTitle.textContent += titleText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeHeroTitle, 80);
+            }
+        }
+        setTimeout(typeHeroTitle, 800);
+
+        // ===== Typing Animation for Motto =====
+        const mottoText = document.getElementById('mottoText');
+        const mottoContent = '"Menulis dengan Hati, Berbagi Informasi"';
+        let mottoIndex = 0;
+        function typeMotto() {
+            if (mottoIndex < mottoContent.length) {
+                mottoText.textContent += mottoContent.charAt(mottoIndex);
+                mottoIndex++;
+                setTimeout(typeMotto, 50);
+            }
+        }
+        setTimeout(typeMotto, 2500);
+
+        // ===== Scroll Animations =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // ===== Navbar Background on Scroll =====
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.classList.add('glass', 'shadow-lg', 'border-b', 'border-sky-100');
+            } else {
+                navbar.classList.remove('glass', 'shadow-lg', 'border-b', 'border-sky-100');
+            }
+            // Back to top visibility
+            if (window.scrollY > 500) {
+                backToTop.style.opacity = '1';
+                backToTop.style.pointerEvents = 'auto';
+                backToTop.style.transform = 'translateY(0)';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.pointerEvents = 'none';
+                backToTop.style.transform = 'translateY(20px)';
+            }
+        });
+
+        // ===== Mobile Menu =====
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        menuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // ===== Article Modal =====
+        function showArticle() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeArticle() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('articleModal').addEventListener('click', function(e) {
+            if (e.target === this) closeArticle();
+        });
+
+        // ===== Lightbox =====
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = img.src;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // ===== Toast =====
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.textContent = msg;
+            toast.classList.remove('hidden');
+            toast.querySelector('div').style.animation = 'slideDown 0.5s forwards';
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        // ===== Registration Form =====
+        function handleRegister(e) {
+            e.preventDefault();
+            const form = document.getElementById('regForm');
+            showToast('Pendaftaran berhasil! Selamat datang di Jurnalistik SRMA 24 🎉');
+            form.reset();
+            return false;
+        }
+
+        // ===== Smooth Scroll for Anchors =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ===== Active Nav Link =====
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ===== Counter Animation for Stats (if visible) =====
+        function animateCounter(el, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = Math.floor(current);
+            }, 30);
+        }
+    </script>
+</body>
+</html>
